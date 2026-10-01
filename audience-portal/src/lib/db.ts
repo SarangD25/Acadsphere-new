@@ -692,7 +692,7 @@ export const db = {
       if (cached && cached.length > 0) {
         // We don't await the fetchPromise to avoid blocking, but NextJS/React might want the latest data.
         // Returning cached data immediately gives instant UX.
-        fetchPromise.catch(() => {}); 
+        Promise.resolve(fetchPromise).catch(() => {}); 
         return cached;
       }
 
